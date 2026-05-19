@@ -12,7 +12,7 @@ return view.extend({
 
 		m = new form.Map('blackhole', _('Blackhole Webserver'), _('Configure the lightweight blackhole server that captures, logs, and mirrors HTTP requests.'));
 
-		s = m.section(form.TypedSection, 'main', _('General Settings'));
+		s = m.section(form.TypedSection, 'blackhole', _('General Settings'));
 		s.anonymous = true;
 		s.addremove = false;
 
@@ -20,7 +20,11 @@ return view.extend({
 		o.rmempty = false;
 
 		o = s.option(form.Value, 'port', _('Listen Port'));
-		o.default = ':8080';
+		o.default = '8080';
+		o.rmempty = false;
+
+		o = s.option(form.Value, 'ip', _('Listen IP Address'));
+		o.default = '0.0.0.0';
 		o.rmempty = false;
 
 		o = s.option(form.Value, 'log', _('Log File Path'));
